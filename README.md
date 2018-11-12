@@ -72,9 +72,14 @@ To save time you'll import a skill  as a starting point that has all the DinnerB
 
 12. Add the first slot by entering `@cuisine`,  in the column labeled **Check for**, `$hours_for` in the **Save it as** column and the  prompt `Which restaurant do you want the hours for ?` in the **If not present, ask** column
 
-13. Select the node **Book Reservation**. Click on **Customize** in the top right corner. Select **Digressions**, expand **Digressions can go away from  this node**, enable it  and select **Only digress from slots to nodes that allow returns** Click **Apply**
+13. Select the node **Request Dinner Hours**. Go to the section **And finally** and select **Skip user input**.
+
+![skip user input](images/ss8.5.png)
+
+14. Select the node **Book Reservation**. Click on **Customize** in the top right corner. Select **Digressions**, expand **Digressions can go away from  this node**, enable it  and select **Only digress from slots to nodes that allow returns** Click **Apply**
 
 ![digression settings](images/ss9.png)
+
 
 
 ### Step 3: Test your chatbot
