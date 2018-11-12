@@ -30,13 +30,13 @@ To save time you'll import a skill  as a starting point that has all the DinnerB
 4. The imported skill will open up in the tool. Click on the  **Intents** tab and note that we've added an intent to request dinner hours for the restaurants. Take a look at the example for the *#hours* intent to see the examples that were used.
 
 
-### Step 2: Add the slots node
+### Step 2: Add the restaurant hours dialog nodes
 
 1. Go to the **Dialog**, select the **Book Reservation** node and click **Add node**
 
-2. Name the node *Request Dinner Hours* and select the #hours intent where it says **if assistant recognizes**
+2. Name the node *Request Dinner Hours* and select the **#hours** intent where it says **if assistant recognizes**
 
-3. Click on **Customize** in the top right corner. Select **Digressions** and expand **Digressions can come into this node**  and select **Return after digression** Click **Apply**
+3. Click on **Customize** in the top right corner. Select **Digressions**, expand **Digressions can come into this node**, enable it, and then select **Return after digression** Click **Apply**
 
 ![enable digressions](images/ss5.png)
 
@@ -101,6 +101,7 @@ The Watson Assistant tooling offers a testing panel to test phrases to confirm t
 
 9. Verify that the hours of the  Mexican restaurant are returned and you're prompted for the time of your reservation again.
 
+![digression tested](images/ss11.png)
 
 ## Summary
 
