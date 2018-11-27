@@ -1,0 +1,459 @@
+{
+  "name": "DinnerBot(Digressions)",
+  "intents": [
+    {
+      "intent": "book-reservation",
+      "examples": [
+        {
+          "text": "secure a reservation"
+        },
+        {
+          "text": "schedule a reservation"
+        },
+        {
+          "text": "reserve a table"
+        },
+        {
+          "text": "make a reservation"
+        },
+        {
+          "text": "book a reservation"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "hours",
+      "examples": [
+        {
+          "text": "When does it open for dinner ?"
+        },
+        {
+          "text": "When  does it close ?"
+        },
+        {
+          "text": "When does the chinese restaurant open for dinner ?"
+        },
+        {
+          "text": "When does La Mesa Rosa open for dinner ?"
+        },
+        {
+          "text": "When does the chinese restaurant close ?"
+        },
+        {
+          "text": "What are the hours of your restaurants"
+        },
+        {
+          "text": "What time is dinner ?"
+        },
+        {
+          "text": "When does La Mesa Rosa close ?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-time",
+      "values": []
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "cuisine",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "italian",
+          "synonyms": [
+            "Osteria"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mexican",
+          "synonyms": [
+            "La Mesa Rosa"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "chinese",
+          "synonyms": [
+            "Hao Hao"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "american",
+          "synonyms": [
+            "Hemmingways"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Hao Hao",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "french",
+          "synonyms": [
+            "Le Cordon Bleu"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-07-10"
+    }
+  },
+  "description": "Book dinner reservations at an all inclusive resort",
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_10_1541631438065",
+      "context": {
+        "time": "@sys-time"
+      },
+      "metadata": {},
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_11_1541631438065",
+      "previous_sibling": "handler_12_1541631438065"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter a valid time"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1541631438065",
+      "event_name": "nomatch",
+      "dialog_node": "handler_34_1541689494319",
+      "previous_sibling": "handler_11_1541631438065"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What time would you like to reserve ?"
+      },
+      "parent": "slot_10_1541631438065",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_12_1541631438065"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_13_1541631491538",
+      "context": {
+        "number": "@sys-number"
+      },
+      "metadata": {},
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_14_1541631491538",
+      "previous_sibling": "handler_15_1541631491538"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Enter a valid party size"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_13_1541631491538",
+      "event_name": "nomatch",
+      "dialog_node": "handler_36_1541689517578",
+      "previous_sibling": "handler_14_1541631491538"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "How many people will be dining ?"
+      },
+      "parent": "slot_13_1541631491538",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_15_1541631491538"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1541631313937",
+      "context": {
+        "cuisine": "@cuisine"
+      },
+      "metadata": {},
+      "conditions": "@cuisine",
+      "event_name": "input",
+      "dialog_node": "handler_5_1541631313937",
+      "previous_sibling": "handler_6_1541631313937"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1541631313937",
+      "metadata": {},
+      "conditions": "true",
+      "event_name": "nomatch",
+      "dialog_node": "handler_20_1541688390582",
+      "previous_sibling": "handler_24_1541688737797"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": []
+        }
+      },
+      "parent": "slot_4_1541631313937",
+      "metadata": {},
+      "conditions": "true",
+      "event_name": "filled",
+      "dialog_node": "handler_24_1541688737797",
+      "previous_sibling": "handler_5_1541631313937"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Which restaurant or what type of cuisine would you like ?"
+      },
+      "parent": "slot_4_1541631313937",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_6_1541631313937"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Great! I've booked a table for <? $number ?> people on <? $date ?> at <? $time ?> for <? $cuisine ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1541631218151",
+      "disabled": true,
+      "metadata": {},
+      "dialog_node": "node_17_1541633842763",
+      "previous_sibling": "handler_3_1541631313928"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_2_1541631218151",
+      "metadata": {},
+      "variable": "$number",
+      "dialog_node": "slot_13_1541631491538",
+      "previous_sibling": "slot_10_1541631438065"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_2_1541631218151",
+      "metadata": {},
+      "variable": "$date",
+      "dialog_node": "slot_7_1541631402447",
+      "previous_sibling": "slot_4_1541631313937"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_2_1541631218151",
+      "metadata": {
+        "_customization": {}
+      },
+      "variable": "$cuisine",
+      "dialog_node": "slot_4_1541631313937",
+      "previous_sibling": "node_17_1541633842763"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_2_1541631218151",
+      "metadata": {},
+      "variable": "$time",
+      "dialog_node": "slot_10_1541631438065",
+      "previous_sibling": "slot_7_1541631402447"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Which restaurant or what type of cuisine would you like ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1541631218151",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_3_1541631313928"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1541631402447",
+      "context": {
+        "date": "@sys-date"
+      },
+      "metadata": {},
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_8_1541631402447",
+      "previous_sibling": "handler_9_1541631402447"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter a valid date"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1541631402447",
+      "metadata": {},
+      "event_name": "nomatch",
+      "dialog_node": "handler_28_1541689008303",
+      "previous_sibling": "handler_8_1541631402447"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What day would you like to reserve ?"
+      },
+      "parent": "slot_7_1541631402447",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_9_1541631402447"
+    },
+    {
+      "type": "frame",
+      "title": "Book Reservation",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Great! I've booked a table for <? $number ?> people on <? $date ?> at <? $time ?> for <? $cuisine ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave",
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "#book-reservation",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1541631218151",
+      "digress_out": "allow_all",
+      "previous_sibling": "Welcome",
+      "digress_out_slots": "allow_returning"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_2_1541631218151"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi. I'm DinnerBot. I can make dinner reservations for you."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "b55b6660-566a-4ebc-8b35-ca90d427b26c",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
