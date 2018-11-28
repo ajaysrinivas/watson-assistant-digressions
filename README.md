@@ -15,9 +15,11 @@ in this lab you'll add a Digression to DinnerBot to allow the users to return re
 
 ### Step 1: Import the starting skill
 
-To save time you'll import a skill  as a starting point that has all the DinnerBot intents and entities  already defined.
+If not open already, navigate to the [Bluemix Console](https://console.bluemix.net/) and launch your IBM Watson Assistant service.
 
-1. Download the saved skills file [dinnerbot-digressions-begin.json](skills/dinnerbot-digressions-begin.json) to your local filesystem.
+To save time you'll import a skill as a starting point that has all the DinnerBot intents and entities  already defined.
+
+1. Download the saved skills file [dinnerbot-digressions-begin.json](skills/dinnerbot-digressions-begin.json) to your local filesystem. (Click "Raw" from the link above to get the raw format to save locally)
 
 2. From the Watson Assistant tooling click on the **Skills** tab and click on **Create new**
 
@@ -70,7 +72,12 @@ To save time you'll import a skill  as a starting point that has all the DinnerB
 
 11. Click on **Customize** in the top right corner. Enable slots and  select **Prompt for everything**. Click **Apply**
 
-12. Add the first slot by entering `@cuisine`,  in the column labeled **Check for**, `$hours_for` in the **Save it as** column and the  prompt `Which restaurant do you want the hours for ?` in the **If not present, ask** column
+12. Add the following values to the area labelled **Then check for** for a single entry.
+
+| Check for   | Save it as  | If not present, ask                         |
+|-------------|-------------|---------------------------------------------|
+| @cuisine    | $hours_for  | Which restaurant do you want the hours for? |
+
 
 13. Select the node **Request Dinner Hours**. Go to the section **And finally** and select **Skip user input**.
 
@@ -88,7 +95,7 @@ The Watson Assistant tooling offers a testing panel to test phrases to confirm t
 
 1. To test the bot, click on the **Try it** icon in the top-right corner of the tooling.
 
-2. A side panel appears and shows the contents of the node that matches welcome. Enter a message that triggers the #book_reservation intent. Start with  `what time does dinner start ?`
+2. A side panel appears and shows the contents of the node that matches welcome. Enter a message that triggers the #hours intent. Start with  `what time does dinner start ?`
 
 3. Verify that you're prompted for a restaurant.
 
